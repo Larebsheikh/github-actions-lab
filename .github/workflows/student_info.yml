@@ -1,0 +1,15 @@
+name: Student Information Workflow
+
+on:
+  push:
+
+jobs:
+  student-details:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display Student Profile
+        run: |
+          echo "Student Name: Lareb Manzoor Sheikh"
+          echo "Course: CY3821 - Secure Software Design and Development"
+          echo "Department: Department of Electrical and Computer Engineering"
+          echo "Institution: Capital University of Science and Technology, Islamabad"

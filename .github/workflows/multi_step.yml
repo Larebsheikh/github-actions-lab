@@ -1,0 +1,24 @@
+name: Multi-Step Verification Workflow
+
+on:
+  push:
+
+jobs:
+  system-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1 - System Diagnostics
+        run: |
+          echo "Checking runner operating system and environment..."
+          uname -a
+          python3 --version
+
+      - name: Step 2 - Workspace Inspection
+        run: |
+          echo "Current working directory:"
+          pwd
+          echo "Directory contents:"
+          ls -la
+
+      - name: Step 3 - Pipeline Notice
+        run: echo "Pre-build system checks passed successfully."

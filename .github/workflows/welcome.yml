@@ -1,0 +1,11 @@
+name: Welcome Message Workflow
+
+on:
+  push:
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display Welcome Message
+        run: echo "Welcome to the Secure Software Design and Development CI/CD Pipeline!"
