@@ -25,6 +25,38 @@ jobs:
           echo "Grading system package built."
 
   deploy:
+
+
+
+
+
+name: CI-CD Pipeline - Student Grading System
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pytest
+      - run: pytest test_grading.py -v
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 -m py_compile grading.py
+          echo "Grading system package built."
+
+  deploy:
     runs-on: ubuntu-latest
     needs: build
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
